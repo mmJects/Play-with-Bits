@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %} | Answers Explanation {% endblock %}
+
+{% block answers %}
+
+<h1> Your calculations contain the following Logical Operations ... </h1>
+{% for img_src in images %}
+<img src="{{img_src}}">
+{% endfor %}
+
+{% for num,bins in bin_and_inps.items() %}
+<h5> {{num}}  => {{ bins }}</h5>
+{% endfor %}
+{% for bin in bins %}
+<h5>{{bin}}</h5>
+{% endfor %}
+
+<h1>The result is {{ ans }}</h1>
+<a href="{{url_for('views.home')}}">Do more calculations</a>
+{% endblock %}

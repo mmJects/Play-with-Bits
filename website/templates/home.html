@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %} | Home {% endblock %}
+
+
+{% block calculations %}
+
+<input type="number" name="dynamic_inps" max="10" min="2" id="add_inps">
+{{ num }}
+
+<form  action="{{url_for('views.calculate')}}" method="POST">
+    <div class="input-group">
+        <input type="number" name="num" class="form-control" required>
+        {% for _ in range(user.numbers-1) %}
+        <select name="cal_type" class="form-select">
+            {% for type_cal in user.cal_types %}
+            <option value="{{ loop.index0 }}">{{type_cal}}</option>
+            {% endfor %}
+        </select>
+        <input type="number" name="num" class="form-control" required>
+        {% endfor %}
+    </div>
+
+    <input type="submit" class="btn btn-primary m-1">
+</form>
+
+{% endblock %}
